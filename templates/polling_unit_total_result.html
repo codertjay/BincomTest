@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load poll_extras %}
+{% block content %}
+    <!-- This is an example component -->
+    <div class="flex justify-center align-center py-10">
+        <div class="max-w-2xl mx-auto">
+
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            ID
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            LGA Name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Total LGA
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Total LGA Result
+                        </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in polling_unit_lga_result %}
+                        <tr
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                {{ forloop.counter }}
+                            </th>
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                {{ item.lga_name }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ item.total_lga_polls }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ item.total_lga_result }}
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

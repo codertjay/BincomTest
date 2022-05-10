@@ -1,0 +1,50 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="167" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="JSXNamespaceValidation" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <scope name="Project Files" level="WEAK WARNING" enabled="true">
+        <option name="importPopup" value="true" />
+      </scope>
+    </inspection_tool>
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="5">
+            <item index="0" class="java.lang.String" itemvalue="djangorestframework-simplejwt" />
+            <item index="1" class="java.lang.String" itemvalue="celery" />
+            <item index="2" class="java.lang.String" itemvalue="kombu" />
+            <item index="3" class="java.lang.String" itemvalue="click" />
+            <item index="4" class="java.lang.String" itemvalue="Django" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N806" />
+          <option value="N802" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="users.serializers.*" />
+          <option value="teems_app_kid.settings.production.rave_python" />
+          <option value="brownie.SimpleStorage" />
+          <option value="brownie.*" />
+          <option value="scripts.helpful_scripts.MockV3Aggregator" />
+          <option value="contract_name" />
+          <option value="bool.get" />
+          <option value="web3.main.Web3.__await__" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

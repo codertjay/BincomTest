@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load poll_extras %}
+{% block content %}
+    <!-- This is an example component -->
+    <div class="flex justify-center align-center py-10">
+        <div class="max-w-2xl mx-auto">
+
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 p-5">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            ID
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Polling Unit Name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Party Abbreviation
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Date
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Party Score
+                        </th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in polling_unit_result %}
+                        <tr
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                {{ forloop.counter }}
+                                <input type="hidden" name="id" value="{{ item.id }}" id="id_polling_id">
+                            </th>
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                {{ item.polling_unit_uniqueid|filter_polling_unit_id }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ item.party_abbreviation }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ item.date_entered }}
+                            </td>
+                            <td class="px-6 py-4 pr-5">
+                                <input type="text" value="{{ item.party_score }}" name="party_score"
+                                       id="{{ item.result_id }}id_polling_party_score"
+                                       class="outline-none" onchange="submitPolls({{ item.result_id }})">
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        function submitPolls(result_id) {
+            console.log(result_id)
+            var value = document.getElementById(`${result_id}id_polling_party_score`).value;
+            console.log(value)
+
+            fetch('', {
+                method: 'POST',
+                body: JSON.stringify({
+                    'party_score': value,
+                    'result_id': result_id
+                })
+            }).then((res) => {
+                console.log(res);
+            }).catch((error) => {
+                console.log(error);
+            })
+
+        }
+    </script>
+{% endblock %}
